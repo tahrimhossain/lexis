@@ -1,9 +1,11 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
-class MyStyle extends StatelessWidget {
+class LogoComponent extends StatelessWidget {
   final String letter;
-  final Color myColor;
-  const MyStyle({Key? key, required this.letter, required this.myColor}) : assert(letter != null), super(key: key);
+  final Color color;
+  const LogoComponent({Key? key, required this.letter, required this.color}):super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +14,7 @@ class MyStyle extends StatelessWidget {
       width: 60,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(30),
-          color: myColor
+          color: color
       ),
       child: Center(
         child: Text(letter,

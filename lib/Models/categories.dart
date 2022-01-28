@@ -1,18 +1,15 @@
-import 'dart:convert';
-import 'package:lexis/Models/category_model.dart';
-
-Categories categoryFromJson(String str) => Categories.fromJson(json.decode(str));
+import 'package:lexis/Models/Category.dart';
 
 class Categories {
-  List<CategoryModel>? categories;
+  List<Category>? categories;
 
   Categories({this.categories});
 
   Categories.fromJson(Map<String, dynamic> json) {
     if (json['Categories'] != null) {
-      categories = <CategoryModel>[];
+      categories = <Category>[];
       json['Categories'].forEach((v) {
-        categories!.add(CategoryModel.fromJson(v));
+        categories!.add(Category.fromJson(v));
       });
     }
   }
