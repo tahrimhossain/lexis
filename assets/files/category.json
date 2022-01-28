@@ -1,0 +1,22 @@
+{
+	"Categories": 
+	[
+		{
+			"Category_Name": "4 LETTERS",
+			"Category_Id": "4"
+		}, 
+		{
+			"Category_Name": "5 LETTERS",
+			"Category_Id": "5"
+		}, 
+		{
+			"Category_Name": "6 LETTERS",
+			"Category_Id": "6"
+		}, 
+		{
+			"Category_Name": "7 LETTERS",
+			"Category_Id": "7"
+		}
+	]
+}
+
