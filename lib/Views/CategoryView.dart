@@ -40,41 +40,46 @@ class _CategoryViewState extends State<CategoryView> {
               );
             }else if(state is LoadedCategoriesState){
               return Scaffold(
-                backgroundColor: Colors.blueGrey,
+                backgroundColor: Color(0xFF283048),
                 appBar: AppBar(),
                 drawer: Drawer(),
-                body: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      // ignore: prefer_const_literals_to_create_immutables
-                      children: [
-                        LogoComponent(letter: "L", color: Colors.black87,),
-                        LogoComponent(letter: "E", color: Colors.black87,),
-                        LogoComponent(letter: "X", color: Colors.black87,),
-                        LogoComponent(letter: "I", color: Colors.black87,),
-                        LogoComponent(letter: "S", color: Colors.black87,),
-                      ],
-                    ),
-                    SizedBox(height: 3.0,),
-                    Expanded(
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(30),
-                                topRight: Radius.circular(30)
-                            )
-                        ),
-                        child: ListView.builder(
-                            itemCount: state.categories!.categories!.length,
-                            itemBuilder: (context, index){
-                              return CategoryCard(state.categories!.categories![index]);
-                            }
-                        ),
+                body: DefaultTextStyle(
+                  style: TextStyle(
+                      color: Colors.white
+                  ),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        // ignore: prefer_const_literals_to_create_immutables
+                        children: [
+                          LogoComponent(letter: "L", color: Color(0xFFb786f7),),
+                          LogoComponent(letter: "E", color: Color(0xFFd95959),),
+                          LogoComponent(letter: "X", color: Color(0xFF18c94d),),
+                          LogoComponent(letter: "I", color: Color(0xFFe8ca05),),
+                          LogoComponent(letter: "S", color: Color(0xFFf28ad6),),
+                        ],
                       ),
-                    )
-                  ],
+                      SizedBox(height: 30.0,),
+                      Expanded(
+                        child: Container(
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(50),
+                                  topRight: Radius.circular(50)
+                              )
+                          ),
+                          child: ListView.builder(
+                              itemCount: state.categories!.categories!.length,
+                              itemBuilder: (context, index){
+                                return CategoryCard(state.categories!.categories![index]);
+                              }
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               );
             }else{

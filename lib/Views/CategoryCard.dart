@@ -24,7 +24,7 @@ class _CategoryCardState extends State<CategoryCard>{
         height: MediaQuery.of(context).size.height/6,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
-            color: Colors.lightBlue,
+            color: Color(0xFF00587a),
             boxShadow: [
               BoxShadow(
                   color: Colors.black45,
@@ -39,7 +39,8 @@ class _CategoryCardState extends State<CategoryCard>{
             child: Text(widget.category.categoryName!,
               style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 24
+                  fontSize: 24,
+                  color: Colors.white
               ),
             ),
           ),
@@ -47,5 +48,4 @@ class _CategoryCardState extends State<CategoryCard>{
       ),
     );
   }
-
 }

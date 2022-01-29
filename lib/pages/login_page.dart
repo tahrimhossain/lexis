@@ -21,7 +21,7 @@ class _LoginPageState extends State<LoginPage> {
       body: SingleChildScrollView(
         child: Stack(
           children: [
-            Image.asset("assets/images/login_background.jpg",
+            Image.asset("assets/images/login_background2.jpg",
               fit: BoxFit.cover,
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,

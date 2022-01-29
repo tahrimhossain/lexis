@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:lexis/Models/Categories.dart';
+import 'package:lexis/Models/categories.dart';
 import 'package:http/http.dart' as http;
 
 

@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:lexis/Models/Categories.dart';
+import 'package:lexis/Models/categories.dart';
 import 'package:lexis/Services/API.dart';
 part  'Category_Event.dart';
 part 'Category_State.dart';
