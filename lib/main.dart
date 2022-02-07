@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lexis/Services/API.dart';
 import 'package:lexis/Views/CategoryView.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lexis/pages/login_page.dart';
+
 
 
 
@@ -12,7 +12,14 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-  runApp(const MyApp());
+  runApp(MultiRepositoryProvider(
+    providers: [
+      RepositoryProvider<API>(
+        create: (context) => API(),
+      ),
+    ],
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -22,7 +29,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Lexis',
         theme: ThemeData(
             primaryTextTheme: GoogleFonts.latoTextTheme(),
             appBarTheme: const AppBarTheme(
@@ -32,14 +39,7 @@ class MyApp extends StatelessWidget {
               iconTheme: IconThemeData(color: Colors.white),
             )
         ),
-        home: MultiRepositoryProvider(
-          providers: [
-            RepositoryProvider<API>(
-              create: (context) => API(),
-            ),
-          ],
-          child: CategoryView(),
-        )
+        home: CategoryView()
 
     );
   }

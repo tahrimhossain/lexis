@@ -17,12 +17,6 @@ class CategoryView extends StatefulWidget {
 class _CategoryViewState extends State<CategoryView> {
 
   @override
-  void initState() {
-    
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
 
     return BlocProvider(
@@ -34,6 +28,7 @@ class _CategoryViewState extends State<CategoryView> {
           builder: (context, state) {
             if(state is LoadingCategoriesState){
               return Scaffold(
+                backgroundColor: Color(0xFF283048),
                 body: Center(
                   child: CircularProgressIndicator(),
                 ),
@@ -73,7 +68,7 @@ class _CategoryViewState extends State<CategoryView> {
                           child: ListView.builder(
                               itemCount: state.categories!.categories!.length,
                               itemBuilder: (context, index){
-                                return CategoryCard(state.categories!.categories![index]);
+                                return CategoryCard(category: state.categories!.categories![index],);
                               }
                           ),
                         ),

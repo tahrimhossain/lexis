@@ -1,14 +1,12 @@
-
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
-
 import 'package:lexis/Models/Category.dart';
 import 'package:flutter/material.dart';
-import 'package:lexis/Views/LogoComponent.dart';
+import 'package:lexis/Views/GameView.dart';
+
 
 class CategoryCard extends StatefulWidget {
 
   final Category category;
-  CategoryCard(this.category);
+  const CategoryCard({Key?key,required this.category}):super(key: key);
 
   @override
   _CategoryCardState createState() => _CategoryCardState();
@@ -44,6 +42,12 @@ class _CategoryCardState extends State<CategoryCard>{
               ),
             ),
           ),
+          onTap: (){
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => GameView(categoryId: widget.category.categoryId!)));
+          },
         ),
       ),
     );

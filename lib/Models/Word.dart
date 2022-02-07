@@ -1,10 +1,10 @@
 import 'package:lexis/Models/Hint.dart';
 
 class Word {
-  String? word;
-  List<Hint>? hints;
+  String ? word;
+  List<Hint> ? hints;
 
-  Word({this.word, this.hints});
+  Word({this.word,this.hints});
 
   Word.fromJson(Map<String, dynamic> json) {
     word = json['Word'];
