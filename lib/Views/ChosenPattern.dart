@@ -18,15 +18,15 @@ class _ChosenPatternState extends State<ChosenPattern> {
   Widget build(BuildContext context) {
 
     return Container(
-      width:min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10,
-      height:(min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10)/(widget.wordLength+0.5),
+      width: min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10,
+      height: MediaQuery.of(context).size.height*(10/100),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           for(int i = 0; i < widget.wordLength; i++)
             Container(
-              width:(min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10)/(widget.wordLength+0.5),
-              height:(min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10)/(widget.wordLength+0.5),
+              width:(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10)/(widget.wordLength+0.5),
+              height:(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10)/(widget.wordLength+0.5),
               decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: i < widget.pattern.length? Colors.blue : Colors.white70,
@@ -35,7 +35,7 @@ class _ChosenPatternState extends State<ChosenPattern> {
                     width: 2,
                   )
               ),
-              child: i < widget.pattern.length ? Center(child: Text(widget.pattern[i],style:TextStyle(fontWeight: FontWeight.bold,fontSize:30,color: Colors.white)),):null,
+              child: i < widget.pattern.length ? Center(child: FittedBox(fit: BoxFit.scaleDown,child: Text(widget.pattern[i],style:const TextStyle(fontWeight: FontWeight.bold,fontSize:30,color: Colors.white)),),):null,
             )
         ],
       ),

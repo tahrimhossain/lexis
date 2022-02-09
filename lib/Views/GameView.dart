@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lexis/Blocs/GameBloc/Game_Bloc.dart';
@@ -41,70 +43,80 @@ class _GameViewState extends State<GameView> {
                 body: SafeArea(
                     child: Center(
                       child: Padding(
-                        padding: EdgeInsets.only(top:(30/844)*MediaQuery.of(context).size.height,bottom:(30/844)*MediaQuery.of(context).size.height),
+                        padding:EdgeInsets.only(top:(2.5/100)*MediaQuery.of(context).size.height,bottom:(2.5/100)*MediaQuery.of(context).size.height),
                         child: Column(
                           children: [
-                            Stack(
-                              children: [
-                                Align(
-                                  alignment: Alignment.centerLeft,
-                                  child:MaterialButton(
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                    },
-                                    minWidth: 20.0,
-                                    //color: Colors.blue,
-                                    textColor: Colors.blue,
-                                    child: Icon(
-                                      Icons.arrow_back,
-                                      size: 30,
+                            Container(
+                              height:MediaQuery.of(context).size.height*(10/100),
+                              width: min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width),
+                              child: Stack(
+                                children: [
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child:MaterialButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      minWidth: 20.0,
+                                      //color: Colors.blue,
+                                      textColor: Colors.blue,
+                                      child: Icon(
+                                        Icons.arrow_back,
+                                        size: 30,
+                                      ),
                                     ),
                                   ),
-                                ),
-                                Align(
-                                  alignment: Alignment.center,
-                                  child: Column(
-                                    children: [
-                                      Text("Score",style:TextStyle(fontWeight: FontWeight.bold,fontSize:30,color: Colors.black)),
-                                      Text(state.score.toString(),style:TextStyle(fontWeight: FontWeight.bold,fontSize:20,color: Colors.black)),
-                                    ],
-                                  ),
-                                )
-
-                              ],
+                                  Align(
+                                    alignment: Alignment.center,
+                                    child: FittedBox(
+                                      fit: BoxFit.scaleDown,
+                                      child: Column(
+                                        children: [
+                                          Text("Score",style:TextStyle(fontWeight: FontWeight.bold,fontSize:30,color: Colors.black)),
+                                          Text(state.score.toString(),style:TextStyle(fontWeight: FontWeight.bold,fontSize:20,color: Colors.black)),
+                                        ],
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
                             ),
                             Spacer(),
                             ChosenPattern(pattern: state.chosenPattern,wordLength: state.jumbledWords.length,),
                             Spacer(),
-                            Padding(
-                              padding: EdgeInsets.only(left: (20/390)*MediaQuery.of(context).size.width,right: (20/390)*MediaQuery.of(context).size.width),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  ElevatedButton(
-                                    onPressed: (){},
-                                    child: Icon(Icons.help, color: Colors.white),
-                                    style: ElevatedButton.styleFrom(
-                                      shape: CircleBorder(),
-                                      padding: EdgeInsets.all(20),
-                                      primary: Colors.grey,
-                                      onPrimary: Colors.black,
+                            Container(
+                              height:MediaQuery.of(context).size.height*(10/100),
+                              width: min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width),
+                              child: Padding(
+                                padding: EdgeInsets.only(left: (20/390)*MediaQuery.of(context).size.width,right: (20/390)*MediaQuery.of(context).size.width),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    ElevatedButton(
+                                      onPressed: (){},
+                                      child: Icon(Icons.help, color: Colors.white),
+                                      style: ElevatedButton.styleFrom(
+                                        shape: CircleBorder(),
+                                        padding: EdgeInsets.all(20),
+                                        primary: Colors.grey,
+                                        onPrimary: Colors.black,
+                                      ),
                                     ),
-                                  ),
-                                  Spacer(),
-                                  ElevatedButton(
-                                    onPressed: (){
-                                      context.read<GameBloc>().add(ResetChosenPattern());
-                                    },
-                                    child: Icon(Icons.refresh, color: Colors.white),
-                                    style: ElevatedButton.styleFrom(
-                                      shape: CircleBorder(),
-                                      padding: EdgeInsets.all(20),
-                                      primary: Colors.grey,
-                                      onPrimary: Colors.black,
+                                    Spacer(),
+                                    ElevatedButton(
+                                      onPressed: (){
+                                        context.read<GameBloc>().add(ResetChosenPattern());
+                                      },
+                                      child: Icon(Icons.refresh, color: Colors.white),
+                                      style: ElevatedButton.styleFrom(
+                                        shape: CircleBorder(),
+                                        padding: EdgeInsets.all(20),
+                                        primary: Colors.grey,
+                                        onPrimary: Colors.black,
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                             Spacer(),

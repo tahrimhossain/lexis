@@ -52,8 +52,8 @@ class _FourLettersState extends State<FourLetters> with SingleTickerProviderStat
         },
 
         child: Container(
-            width: min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10,
-            height: min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10,
+            width: min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10,
+            height: min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10,
             child: Stack(
               fit: StackFit.expand,
               children: [
@@ -68,13 +68,13 @@ class _FourLettersState extends State<FourLetters> with SingleTickerProviderStat
                     ),
                 //left
                 Positioned(
-                    top: ((min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10)/2)-(((80/260)*(min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10))/2),
-                    left: (5/260)*(min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10),
+                    top: ((min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10)/2)-(((80/260)*(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10))/2),
+                    left: (5/260)*(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10),
 
                     child:GestureDetector(
                       child: Container(
-                          width: (80/260)*(min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10),
-                          height: (80/260)*(min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10),
+                          width: (80/260)*(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10),
+                          height: (80/260)*(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10),
                           decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               color: widget.jumbledWord[0].second == false ? Colors.blue : Colors.grey
@@ -93,13 +93,13 @@ class _FourLettersState extends State<FourLetters> with SingleTickerProviderStat
 
                 //top
                 Positioned(
-                    top: (5/260)*(min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10),
-                    left: ((min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10)/2)-(((80/260)*(min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10))/2),
+                    top: (5/260)*(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10),
+                    left: ((min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10)/2)-(((80/260)*(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10))/2),
 
                     child:GestureDetector(
                       child: Container(
-                          width: (80/260)*(min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10),
-                          height: (80/260)*(min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10),
+                          width: (80/260)*(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10),
+                          height: (80/260)*(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10),
                           decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               color: widget.jumbledWord[1].second == false ? Colors.blue : Colors.grey
@@ -118,13 +118,13 @@ class _FourLettersState extends State<FourLetters> with SingleTickerProviderStat
 
                 //right
                 Positioned(
-                    top: ((min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10)/2)-(((80/260)*(min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10))/2),
-                    right: (5/260)*(min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10),
+                    top: ((min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10)/2)-(((80/260)*(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10))/2),
+                    right: (5/260)*(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10),
 
                     child:GestureDetector(
                       child: Container(
-                          width: (80/260)*(min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10),
-                          height: (80/260)*(min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10),
+                          width: (80/260)*(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10),
+                          height: (80/260)*(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10),
                           decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               color: widget.jumbledWord[2].second == false ? Colors.blue : Colors.grey
@@ -143,13 +143,13 @@ class _FourLettersState extends State<FourLetters> with SingleTickerProviderStat
 
                 //bottom
                 Positioned(
-                    bottom: (5/260)*(min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10),
-                    left: ((min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10)/2)-(((80/260)*(min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10))/2),
+                    bottom: (5/260)*(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10),
+                    left: ((min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10)/2)-(((80/260)*(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10))/2),
 
                     child:GestureDetector(
                       child: Container(
-                          width: (80/260)*(min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10),
-                          height: (80/260)*(min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10),
+                          width: (80/260)*(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10),
+                          height: (80/260)*(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10),
                           decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               color: widget.jumbledWord[3].second == false ? Colors.blue : Colors.grey

@@ -51,8 +51,8 @@ class _SixLettersState extends State<SixLetters> with SingleTickerProviderStateM
       },
 
       child: Container(
-          width:min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10,
-          height:min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10,
+          width:min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10,
+          height:min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10,
           child: Stack(
             fit: StackFit.expand,
             children: [
@@ -68,13 +68,13 @@ class _SixLettersState extends State<SixLetters> with SingleTickerProviderStateM
 
               //left
               Positioned(
-                  top:((min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10)/2)-(((80/260)*(min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10))/2),
-                  left: (5/260)*(min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10),
+                  top:((min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10)/2)-(((80/260)*(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10))/2),
+                  left: (5/260)*(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10),
 
                   child:GestureDetector(
                     child: Container(
-                        width:(80/260)*(min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10),
-                        height:(80/260)*(min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10),
+                        width:(80/260)*(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10),
+                        height:(80/260)*(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10),
                         decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             color: widget.jumbledWord[0].second == false ? Colors.blue : Colors.grey
@@ -93,16 +93,16 @@ class _SixLettersState extends State<SixLetters> with SingleTickerProviderStateM
 
               //top
               Positioned(
-                  top:(20/260)*(min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10),
-                  left:(50/260)*(min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10),
+                  top:(20/260)*(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10),
+                  left:(50/260)*(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10),
                   child: Container(
-                    height:(80/260)*(min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10),
+                    height:(80/260)*(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10),
                     child: Row(
                       children: [
                         GestureDetector(
                           child: Container(
-                              width:(80/260)*(min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10),
-                              height:(80/260)*(min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10),
+                              width:(80/260)*(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10),
+                              height:(80/260)*(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10),
                               decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   color: widget.jumbledWord[1].second == false ? Colors.blue : Colors.grey
@@ -119,8 +119,8 @@ class _SixLettersState extends State<SixLetters> with SingleTickerProviderStateM
                         ),
                         GestureDetector(
                           child: Container(
-                              width:(80/260)*(min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10),
-                              height:(80/260)*(min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10),
+                              width:(80/260)*(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10),
+                              height:(80/260)*(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10),
                               decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   color: widget.jumbledWord[2].second == false ? Colors.blue : Colors.grey
@@ -141,13 +141,13 @@ class _SixLettersState extends State<SixLetters> with SingleTickerProviderStateM
 
               //right
               Positioned(
-                  top:((min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10)/2)-(((80/260)*(min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10))/2),
-                  right: (5/260)*(min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10),
+                  top:((min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10)/2)-(((80/260)*(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10))/2),
+                  right: (5/260)*(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10),
 
                   child:GestureDetector(
                     child: Container(
-                        width: (80/260)*(min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10),
-                        height: (80/260)*(min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10),
+                        width: (80/260)*(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10),
+                        height: (80/260)*(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10),
                         decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             color: widget.jumbledWord[3].second == false ? Colors.blue : Colors.grey
@@ -166,16 +166,16 @@ class _SixLettersState extends State<SixLetters> with SingleTickerProviderStateM
 
               //bottom
               Positioned(
-                  bottom:(20/260)*(min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10),
-                  left:(50/260)*(min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10),
+                  bottom:(20/260)*(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10),
+                  left:(50/260)*(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10),
                   child: Container(
-                    height:(80/260)*(min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10),
+                    height:(80/260)*(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10),
                     child: Row(
                       children: [
                         GestureDetector(
                           child: Container(
-                              width:(80/260)*(min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10),
-                              height:(80/260)*(min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10),
+                              width:(80/260)*(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10),
+                              height:(80/260)*(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10),
                               decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   color: widget.jumbledWord[4].second == false ? Colors.blue : Colors.grey
@@ -192,8 +192,8 @@ class _SixLettersState extends State<SixLetters> with SingleTickerProviderStateM
                         ),
                         GestureDetector(
                           child: Container(
-                              width:(80/260)*(min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10),
-                              height:(80/260)*(min(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width)-10),
+                              width:(80/260)*(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10),
+                              height:(80/260)*(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10),
                               decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   color: widget.jumbledWord[5].second == false ? Colors.blue : Colors.grey
