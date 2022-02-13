@@ -1,6 +1,8 @@
+import 'package:lexis/Blocs/CategoryBloc/Category_Bloc.dart';
 import 'package:lexis/Models/Category.dart';
 import 'package:flutter/material.dart';
 import 'package:lexis/Views/GameView.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 
 class CategoryCard extends StatefulWidget {
@@ -42,11 +44,12 @@ class _CategoryCardState extends State<CategoryCard>{
               ),
             ),
           ),
-          onTap: (){
-            Navigator.push(
+          onTap: ()async{
+           await Navigator.push(
                 context,
                 MaterialPageRoute(
                     builder: (context) => GameView(categoryId: widget.category.categoryId!)));
+           context.read<CategoryBloc>().add(LoadCategoriesEvent());
           },
         ),
       ),

@@ -11,7 +11,7 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
   CategoryBloc(this.api) : super(LoadingCategoriesState()) {
 
     on<LoadCategoriesEvent>((event, emit) async{
-
+      emit(LoadingCategoriesState());
       try{
         Categories categories = await api.getCategories();
         emit(LoadedCategoriesState(categories: categories));
