@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lexis/Services/API.dart';
+import 'package:lexis/Services/Authentication.dart';
 import 'package:lexis/Views/CategoryView.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -16,6 +17,9 @@ void main() {
     providers: [
       RepositoryProvider<API>(
         create: (context) => API(),
+      ),
+      RepositoryProvider<Authentication>(
+        create: (context) => Authentication(),
       ),
     ],
     child: const MyApp(),
