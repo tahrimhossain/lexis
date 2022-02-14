@@ -31,6 +31,7 @@ class Authentication{
     try{
       await _auth.createUserWithEmailAndPassword(email: email, password: password);
     }on FirebaseAuthException catch (e){
+      print(e.code);
       throw SignUpWithEmailAndPasswordFailure.fromCode(e.code);
     }catch(_){
       throw const SignUpWithEmailAndPasswordFailure();

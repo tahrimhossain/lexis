@@ -5,12 +5,15 @@ import 'package:lexis/Services/API.dart';
 import 'package:lexis/Services/Authentication.dart';
 import 'package:lexis/Views/CategoryView.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'Blocs/AuthenticationBloc/Authentication_Bloc.dart';
 
 
 
 
-void main() {
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   runApp(MultiRepositoryProvider(
@@ -22,7 +25,12 @@ void main() {
         create: (context) => Authentication(),
       ),
     ],
-    child: const MyApp(),
+    child: BlocProvider(
+      create: (BuildContext context) => AuthenticationBloc(
+          RepositoryProvider.of<Authentication>(context)
+      ),
+      child: MyApp(),
+    ),
   ));
 }
 
@@ -43,7 +51,42 @@ class MyApp extends StatelessWidget {
               iconTheme: IconThemeData(color: Colors.white),
             )
         ),
-        home: CategoryView()
+        home: BlocBuilder<AuthenticationBloc,AuthenticationState>(
+        builder: (context, state) {
+
+          if(state is DeterminingAuthenticationState){
+            return const Scaffold(
+              body: Center(child: CircularProgressIndicator(),),
+            );
+          }else if(state is AuthenticatedState){
+            return CategoryView();
+          }else{
+            return Scaffold(
+              body: SafeArea(
+                child: Center(
+                    child: Column(
+                      children: [
+                        ElevatedButton(
+                          child: const Text("SignUp"),
+                          onPressed: (){
+                            context.read<AuthenticationBloc>().add(SignUpRequestEvent(password: '11809072', email: 'tahrimh246@gmail.com'));
+                          },
+                        ),
+                        ElevatedButton(
+                          child: const Text("LogIn"),
+                          onPressed: (){
+                            context.read<AuthenticationBloc>().add(LogInRequestEvent(password: '11809072', email: 'tahrimh246@gmail.com'));
+                          }
+                        ),
+                      ],
+                    )
+                ),
+              ),
+            );
+          }
+        }
+
+        )
 
     );
   }

@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lexis/Blocs/AuthenticationBloc/Authentication_Bloc.dart';
 import 'package:lexis/Blocs/CategoryBloc/Category_Bloc.dart';
 import 'package:lexis/Services/API.dart';
 import 'package:lexis/Views/LogoComponent.dart';
@@ -37,7 +38,18 @@ class _CategoryViewState extends State<CategoryView> {
               return Scaffold(
                 backgroundColor: Color(0xFF283048),
                 appBar: AppBar(),
-                drawer: Drawer(),
+                drawer: Drawer(
+                  child: ListView(
+                    children: [
+                      ListTile(
+                        title: Text("LogOut"),
+                        onTap: (){
+                          context.read<AuthenticationBloc>().add(LogOutRequestEvent());
+                        },
+                      )
+                    ],
+                  ),
+                ),
                 body: DefaultTextStyle(
                   style: TextStyle(
                       color: Colors.white
