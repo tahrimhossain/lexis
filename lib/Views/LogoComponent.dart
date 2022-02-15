@@ -19,6 +19,7 @@ class LogoComponent extends StatelessWidget {
       child: Center(
         child: Text(letter,
           style: TextStyle(
+              color: Colors.white,
               fontSize: 40,
               fontWeight: FontWeight.bold
           ),

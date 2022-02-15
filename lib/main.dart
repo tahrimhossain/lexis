@@ -6,6 +6,7 @@ import 'package:lexis/Services/Authentication.dart';
 import 'package:lexis/Views/CategoryView.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:lexis/Views/login_signup.dart';
 import 'Blocs/AuthenticationBloc/Authentication_Bloc.dart';
 
 
@@ -61,7 +62,7 @@ class MyApp extends StatelessWidget {
           }else if(state is AuthenticatedState){
             return CategoryView();
           }else{
-            return Scaffold(
+            return LoginSignupScreen();/*Scaffold(
               body: SafeArea(
                 child: Center(
                     child: Column(
@@ -82,7 +83,7 @@ class MyApp extends StatelessWidget {
                     )
                 ),
               ),
-            );
+            );*/
           }
         }
 
