@@ -6,7 +6,7 @@ import 'package:lexis/Services/Authentication.dart';
 import 'package:lexis/Views/CategoryView.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:lexis/Views/login_signup.dart';
+import 'package:lexis/Views/LogInSignUpView.dart';
 import 'Blocs/AuthenticationBloc/Authentication_Bloc.dart';
 
 
@@ -62,28 +62,7 @@ class MyApp extends StatelessWidget {
           }else if(state is AuthenticatedState){
             return CategoryView();
           }else{
-            return LoginSignupScreen();/*Scaffold(
-              body: SafeArea(
-                child: Center(
-                    child: Column(
-                      children: [
-                        ElevatedButton(
-                          child: const Text("SignUp"),
-                          onPressed: (){
-                            context.read<AuthenticationBloc>().add(SignUpRequestEvent(password: '11809072', email: 'tahrimh246@gmail.com'));
-                          },
-                        ),
-                        ElevatedButton(
-                          child: const Text("LogIn"),
-                          onPressed: (){
-                            context.read<AuthenticationBloc>().add(LogInRequestEvent(password: '11809072', email: 'tahrimh246@gmail.com'));
-                          }
-                        ),
-                      ],
-                    )
-                ),
-              ),
-            );*/
+            return LogInSignUpView();
           }
         }
 

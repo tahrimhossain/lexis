@@ -10,11 +10,15 @@ class Authentication{
   Authentication({FirebaseAuth ? auth}):_auth = auth ?? FirebaseAuth.instance;
 
   Stream<CustomUser> get user {
-    return _auth.authStateChanges().map((User ? user) {
+    return _auth.userChanges().map((User ? user) {
       if(user == null){
         return const CustomUser(id: '');
       }else{
-        return CustomUser(id:user.uid,email: user.email);
+        if(user.displayName == null){
+          return CustomUser(id:user.uid ,email:user.email);
+        }else{
+          return CustomUser(id:user.uid ,name: user.displayName,email:user.email);
+        }
       }
     });
   }
@@ -27,11 +31,12 @@ class Authentication{
     }
   }
 
-  Future<void> signUp({required String email,required String password})async{
+  Future<void> signUp({required String name,required String email,required String password})async{
     try{
       await _auth.createUserWithEmailAndPassword(email: email, password: password);
+      await _auth.currentUser?.updateDisplayName(name);
+      await _auth.currentUser?.reload();
     }on FirebaseAuthException catch (e){
-      print(e.code);
       throw SignUpWithEmailAndPasswordFailure.fromCode(e.code);
     }catch(_){
       throw const SignUpWithEmailAndPasswordFailure();

@@ -4,10 +4,11 @@ part of 'Authentication_Bloc.dart';
 abstract class AuthenticationEvent {}
 
 class SignUpRequestEvent extends AuthenticationEvent{
+  final String name;
   final String email;
   final String password;
 
-  SignUpRequestEvent({required this.password,required this.email}):super();
+  SignUpRequestEvent({required this.name,required this.password,required this.email}):super();
 }
 
 class LogInRequestEvent extends AuthenticationEvent{

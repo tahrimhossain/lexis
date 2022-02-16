@@ -5,7 +5,6 @@ import 'package:lexis/Models/CustomUser.dart';
 import 'package:lexis/Models/LogInWithEmailAndPasswordFailure.dart';
 import 'package:lexis/Models/SignUpWithEmailAndPasswordFailure.dart';
 import 'package:lexis/Services/Authentication.dart';
-import 'package:meta/meta.dart';
 
 part 'Authentication_Event.dart';
 part 'Authentication_State.dart';
@@ -21,14 +20,16 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
       if(event.customUser.id == ''){
         emit(NotAuthenticatedState());
       }else{
-        emit(AuthenticatedState(customUser: event.customUser));
+        if(event.customUser.name != null){
+          emit(AuthenticatedState(customUser: event.customUser));
+        }
       }
     });
 
     on<SignUpRequestEvent>((event, emit) async{
       emit(DeterminingAuthenticationState());
       try{
-        await auth.signUp(email: event.email, password: event.password);
+        await auth.signUp(name:event.name,email: event.email, password: event.password);
       }on SignUpWithEmailAndPasswordFailure catch(e){
         emit(NotAuthenticatedState(signUpWithEmailAndPasswordFailure: e));
       }

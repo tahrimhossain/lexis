@@ -158,7 +158,7 @@ class _GameViewState extends State<GameView> {
                                 children: [
                                   ElevatedButton(
                                     onPressed: (){
-                                      Navigator.pop(context);
+                                      Navigator.pop(context,state.score);
                                     },
                                     child: Icon(Icons.home, color: Colors.white),
                                     style: ElevatedButton.styleFrom(
@@ -215,7 +215,7 @@ class _GameViewState extends State<GameView> {
                               Spacer(),
                               ElevatedButton(
                                 onPressed: (){
-                                  Navigator.pop(context);
+                                  Navigator.pop(context,state.score);
                                 },
                                 child: Icon(Icons.home, color: Colors.white),
                                 style: ElevatedButton.styleFrom(
