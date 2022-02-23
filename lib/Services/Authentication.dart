@@ -35,7 +35,6 @@ class Authentication{
     try{
       await _auth.createUserWithEmailAndPassword(email: email, password: password);
       await _auth.currentUser?.updateDisplayName(name);
-      await _auth.currentUser?.reload();
     }on FirebaseAuthException catch (e){
       throw SignUpWithEmailAndPasswordFailure.fromCode(e.code);
     }catch(_){
