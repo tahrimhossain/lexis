@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lexis/Blocs/AuthenticationBloc/Authentication_Bloc.dart';
 import 'package:lexis/Blocs/CategoryBloc/Category_Bloc.dart';
 import 'package:lexis/Services/API.dart';
+import 'package:lexis/Services/Authentication.dart';
 import 'package:lexis/Views/LogoComponent.dart';
 import 'CategoryCard.dart';
 
@@ -22,7 +23,7 @@ class _CategoryViewState extends State<CategoryView> {
 
     return BlocProvider(
       create: (BuildContext context) => CategoryBloc(
-        RepositoryProvider.of<API>(context)
+        RepositoryProvider.of<API>(context),RepositoryProvider.of<Authentication>(context)
       )..add(LoadCategoriesEvent()),
 
       child: BlocBuilder<CategoryBloc,CategoryState>(
