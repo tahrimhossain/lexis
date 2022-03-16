@@ -62,6 +62,7 @@ class _FiveLettersState extends State<FiveLetters> with SingleTickerProviderStat
 
                   builder:(context,value){
                     return CircularProgressIndicator(
+                      color: Colors.white,
                       value: animation.value,
                     );
                   }
@@ -78,7 +79,8 @@ class _FiveLettersState extends State<FiveLetters> with SingleTickerProviderStat
                         height: (80/260)*(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10),
                         decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: widget.jumbledWord[0].second == false ? Colors.blue : Colors.grey
+                            color: widget.jumbledWord[0].second == false ? Color(0xFF00587a) : Colors.grey,
+                            border: Border.all(color: Colors.white70)
                         ),
                         child:Center(child: Text(widget.jumbledWord[0].first,style:const TextStyle(fontWeight: FontWeight.bold,fontSize:30,color: Colors.white)),)
                     ),
@@ -103,7 +105,8 @@ class _FiveLettersState extends State<FiveLetters> with SingleTickerProviderStat
                         height: (80/260)*(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10),
                         decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: widget.jumbledWord[1].second == false ? Colors.blue : Colors.grey
+                            color: widget.jumbledWord[1].second == false ? Color(0xFF00587a) : Colors.grey,
+                            border: Border.all(color: Colors.white70)
                         ),
                         child:Center(child: Text(widget.jumbledWord[1].first,style:const TextStyle(fontWeight: FontWeight.bold,fontSize:30,color: Colors.white)),)
                     ),
@@ -128,7 +131,8 @@ class _FiveLettersState extends State<FiveLetters> with SingleTickerProviderStat
                         height: (80/260)*(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10),
                         decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: widget.jumbledWord[2].second == false ? Colors.blue : Colors.grey
+                            color: widget.jumbledWord[2].second == false ? Color(0xFF00587a) : Colors.grey,
+                            border: Border.all(color: Colors.white70)
                         ),
                         child:Center(child: Text(widget.jumbledWord[2].first,style:const TextStyle(fontWeight: FontWeight.bold,fontSize:30,color: Colors.white)),)
                     ),
@@ -153,7 +157,8 @@ class _FiveLettersState extends State<FiveLetters> with SingleTickerProviderStat
                         height: (80/260)*(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10),
                         decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: widget.jumbledWord[3].second == false ? Colors.blue : Colors.grey
+                            color: widget.jumbledWord[3].second == false ? Color(0xFF00587a) : Colors.grey,
+                            border: Border.all(color: Colors.white70)
                         ),
                         child:Center(child: Text(widget.jumbledWord[3].first,style:const TextStyle(fontWeight: FontWeight.bold,fontSize:30,color: Colors.white)),)
                     ),
@@ -178,7 +183,8 @@ class _FiveLettersState extends State<FiveLetters> with SingleTickerProviderStat
                         height: (80/260)*(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10),
                         decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: widget.jumbledWord[4].second == false ? Colors.blue : Colors.grey
+                            color: widget.jumbledWord[4].second == false ? Color(0xFF00587a) : Colors.grey,
+                            border: Border.all(color: Colors.white70)
                         ),
                         child:Center(child: Text(widget.jumbledWord[4].first,style:const TextStyle(fontWeight: FontWeight.bold,fontSize:30,color: Colors.white)),)
                     ),

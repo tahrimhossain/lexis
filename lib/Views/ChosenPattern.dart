@@ -29,9 +29,9 @@ class _ChosenPatternState extends State<ChosenPattern> {
               height:(min(MediaQuery.of(context).size.height*(65/100),MediaQuery.of(context).size.width)-10)/(widget.wordLength+0.5),
               decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: i < widget.pattern.length? Colors.blue : Colors.white70,
-                  border: i < widget.pattern.length ? null : Border.all(
-                    color: Colors.blue,
+                  color: i < widget.pattern.length? Color(0xFF00587a) : Colors.white70,
+                  border: i < widget.pattern.length ? Border.all(color: Colors.white70) : Border.all(
+                    color: Colors.white10,
                     width: 2,
                   )
               ),

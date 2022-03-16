@@ -40,6 +40,7 @@ class _GameViewState extends State<GameView> {
               );
             }else if(state is GameInProgressState){
               return Scaffold(
+                backgroundColor: Color(0xFF283048),
                 body: SafeArea(
                     child: Center(
                       child: Padding(
@@ -59,7 +60,7 @@ class _GameViewState extends State<GameView> {
                                       },
                                       minWidth: 20.0,
                                       //color: Colors.blue,
-                                      textColor: Colors.blue,
+                                      textColor: Colors.white,
                                       child: Icon(
                                         Icons.arrow_back,
                                         size: 30,
@@ -72,8 +73,8 @@ class _GameViewState extends State<GameView> {
                                       fit: BoxFit.scaleDown,
                                       child: Column(
                                         children: [
-                                          Text("Score",style:TextStyle(fontWeight: FontWeight.bold,fontSize:30,color: Colors.black)),
-                                          Text(state.score.toString(),style:TextStyle(fontWeight: FontWeight.bold,fontSize:20,color: Colors.black)),
+                                          Text("Score",style:TextStyle(fontWeight: FontWeight.bold,fontSize:30,color: Colors.white)),
+                                          Text(state.score.toString(),style:TextStyle(fontWeight: FontWeight.bold,fontSize:20,color: Colors.white)),
                                         ],
                                       ),
                                     ),
@@ -93,7 +94,83 @@ class _GameViewState extends State<GameView> {
                                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   children: [
                                     ElevatedButton(
-                                      onPressed: (){},
+                                      onPressed: (){
+                                        showModalBottomSheet(
+                                            isScrollControlled: true,
+                                            backgroundColor: Colors.transparent,
+                                            context: context,
+                                            builder: (BuildContext context) {
+                                              return GestureDetector(
+                                                behavior: HitTestBehavior.opaque,
+                                                onTap: (){
+                                                  Navigator.of(context).pop();
+                                                },
+                                                child: DraggableScrollableSheet(
+                                                  initialChildSize: 0.3,
+                                                  minChildSize: 0.3,
+                                                  maxChildSize: 0.6,
+                                                  builder: (BuildContext context, ScrollController scrollController) => Container(
+                                                    decoration: BoxDecoration(
+                                                        color: Colors.white,
+                                                        borderRadius: BorderRadius.vertical(top: Radius.circular(20.0))
+                                                    ),
+                                                    padding: EdgeInsets.all(16.0),
+                                                    child: ListView.builder(
+                                                      controller: scrollController,
+                                                      itemCount: state.round.words![state.currentWordIndex].hints!.length,
+                                                      itemBuilder: (BuildContext context, int index) {
+                                                        return Column(
+                                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                                          children: [
+                                                            RichText(
+                                                              text: TextSpan(
+                                                                style: new TextStyle(
+                                                                  fontSize: 14.0,
+                                                                  color: Colors.black,
+                                                                  fontFamily: 'Montserrat',
+                                                                ),
+                                                                children: <TextSpan>[
+                                                                  new TextSpan(text: "Parts of speech: ",style: TextStyle(fontWeight: FontWeight.bold)),
+                                                                  new TextSpan(text: "${state.round.words![state.currentWordIndex].hints![index].poS}"),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                            SizedBox(height: 5,),
+                                                            ListView.builder(
+                                                                shrinkWrap: true,
+                                                                physics: ClampingScrollPhysics(),
+                                                                itemCount: state.round.words![state.currentWordIndex].hints![index].meanings!.length,
+                                                                itemBuilder: (BuildContext context, int index2){
+                                                                  return Column(
+                                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                                    children: [
+                                                                      RichText(
+                                                                        text: TextSpan(
+                                                                          style: new TextStyle(
+                                                                            fontSize: 14.0,
+                                                                            color: Colors.black,
+                                                                            fontFamily: 'Montserrat',
+                                                                          ),
+                                                                          children: <TextSpan>[
+                                                                          new TextSpan(text: "Meaning ${index2 + 1}: ",style: TextStyle(fontWeight: FontWeight.bold)),
+                                                                          new TextSpan(text: "${state.round.words![state.currentWordIndex].hints![index].meanings![index2]}"),
+                                                                          ],
+                                                                        ),
+                                                                      ),
+                                                                      SizedBox(height: 5,)
+                                                                    ],
+                                                                  );
+                                                                }),
+                                                            SizedBox(height: 15,),
+                                                          ],
+                                                        );
+                                                      },
+                                                    )
+                                                  ),
+                                                ),
+                                              );
+                                            });
+                                      },
                                       child: Icon(Icons.help, color: Colors.white),
                                       style: ElevatedButton.styleFrom(
                                         shape: CircleBorder(),
