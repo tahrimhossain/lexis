@@ -2,6 +2,7 @@
 
 import 'dart:math';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lexis/Blocs/GameBloc/Game_Bloc.dart';
@@ -122,18 +123,11 @@ class _GameViewState extends State<GameView> {
                                                         return Column(
                                                           crossAxisAlignment: CrossAxisAlignment.start,
                                                           children: [
-                                                            RichText(
-                                                              text: TextSpan(
-                                                                style: new TextStyle(
-                                                                  fontSize: 14.0,
-                                                                  color: Colors.black,
-                                                                  fontFamily: 'Montserrat',
-                                                                ),
-                                                                children: <TextSpan>[
-                                                                  new TextSpan(text: "Parts of speech: ",style: TextStyle(fontWeight: FontWeight.bold)),
-                                                                  new TextSpan(text: "${state.round.words![state.currentWordIndex].hints![index].poS}"),
-                                                                ],
-                                                              ),
+                                                            Text("     ${state.round.words![state.currentWordIndex].hints![index].poS}",
+                                                              style: TextStyle(
+                                                                  fontSize: 16,
+                                                                  fontWeight: FontWeight.bold
+                                                              )
                                                             ),
                                                             SizedBox(height: 5,),
                                                             ListView.builder(
@@ -144,24 +138,25 @@ class _GameViewState extends State<GameView> {
                                                                   return Column(
                                                                     crossAxisAlignment: CrossAxisAlignment.start,
                                                                     children: [
-                                                                      RichText(
-                                                                        text: TextSpan(
-                                                                          style: new TextStyle(
-                                                                            fontSize: 14.0,
-                                                                            color: Colors.black,
-                                                                            fontFamily: 'Montserrat',
-                                                                          ),
-                                                                          children: <TextSpan>[
-                                                                          new TextSpan(text: "Meaning ${index2 + 1}: ",style: TextStyle(fontWeight: FontWeight.bold)),
-                                                                          new TextSpan(text: "${state.round.words![state.currentWordIndex].hints![index].meanings![index2]}"),
-                                                                          ],
-                                                                        ),
+                                                                      Row(
+                                                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                                                        children: [
+                                                                          Icon(CupertinoIcons.arrowshape_turn_up_right, size: 15),
+                                                                          SizedBox(width: 5,),
+                                                                          Flexible(
+                                                                            child: Text("${state.round.words![state.currentWordIndex].hints![index].meanings![index2]}",
+                                                                              style: TextStyle(
+                                                                                fontSize: 14,
+                                                                              ),
+                                                                            ),
+                                                                          )
+                                                                        ],
                                                                       ),
-                                                                      SizedBox(height: 5,)
+                                                                      SizedBox(height: 8,)
                                                                     ],
                                                                   );
                                                                 }),
-                                                            SizedBox(height: 15,),
+                                                            SizedBox(height: 14,),
                                                           ],
                                                         );
                                                       },
