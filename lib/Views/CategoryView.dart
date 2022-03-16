@@ -90,7 +90,22 @@ class _CategoryViewState extends State<CategoryView> {
                   ),
                 ),
               );
-            }else{
+            }else if(state is ErrorUpdatingScoreState){
+              return Scaffold(
+                body: Center(
+                  child: Column(
+                    children: [
+                      Text("Error"),
+                      ElevatedButton(onPressed:(){
+                        context.read<CategoryBloc>().add(UpdateScoreEvent(score: state.score, categoryId: state.categoryId));
+                      },
+                      child: Text("Retry")
+                      )
+                    ],
+                  )
+                ),
+              );
+            } else{
               return Scaffold(
                 body: Center(
                   child: Text("Error"),

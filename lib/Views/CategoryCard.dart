@@ -47,7 +47,7 @@ class _CategoryCardState extends State<CategoryCard>{
           onTap: ()async{
            int ? score = await Navigator.push(context, MaterialPageRoute(builder: (context) => GameView(categoryId: widget.category.categoryId!)));
            if(score != null){
-             context.read<CategoryBloc>().add(LoadCategoriesEvent());
+             context.read<CategoryBloc>().add(UpdateScoreEvent(score: score, categoryId: widget.category.categoryId!));
            }
           },
         ),

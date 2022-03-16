@@ -24,5 +24,17 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
       }
 
     });
+
+    on<UpdateScoreEvent>((event, emit) async{
+      emit(LoadingCategoriesState());
+      try{
+        CustomUser? user = authentication.getCurrentUser();
+        await api.updateScore(user!.id,event.categoryId,event.score);
+        Categories categories = await api.getCategories(user.id);
+        emit(LoadedCategoriesState(categories: categories));
+      }catch(e){
+        emit(ErrorUpdatingScoreState(categoryId: event.categoryId, score: event.score));
+      }
+    });
   }
 }

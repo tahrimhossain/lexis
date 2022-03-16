@@ -11,3 +11,10 @@ class LoadedCategoriesState extends CategoryState{
 }
 
 class ErrorLoadingCategoriesState extends CategoryState{}
+
+class ErrorUpdatingScoreState extends CategoryState{
+   String categoryId;
+   int score;
+
+   ErrorUpdatingScoreState({required this.categoryId,required this.score});
+}
