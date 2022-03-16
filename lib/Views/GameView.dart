@@ -22,6 +22,9 @@ class GameView extends StatefulWidget {
 }
 
 class _GameViewState extends State<GameView> {
+
+  bool popUpOpen = false;
+
   @override
   Widget build(BuildContext context) {
 
@@ -30,7 +33,12 @@ class _GameViewState extends State<GameView> {
         create: (BuildContext context) => GameBloc(
             RepositoryProvider.of<API>(context)
         )..add(LoadRoundEvent(categoryId: widget.categoryId, numberOfWords:5)),
-        child: BlocBuilder<GameBloc,GameState>(
+        child: BlocConsumer<GameBloc,GameState>(
+          listener: (context, state) {
+            if(state is! GameInProgressState && popUpOpen == true){
+              Navigator.pop(context);
+            }
+          },
           builder: (context,state){
             if(state is LoadingRoundState){
               return Scaffold(
@@ -96,6 +104,7 @@ class _GameViewState extends State<GameView> {
                                   children: [
                                     ElevatedButton(
                                       onPressed: (){
+                                        popUpOpen = true;
                                         showModalBottomSheet(
                                             isScrollControlled: true,
                                             backgroundColor: Colors.transparent,
@@ -164,7 +173,10 @@ class _GameViewState extends State<GameView> {
                                                   ),
                                                 ),
                                               );
-                                            });
+                                            }).whenComplete((){
+                                              popUpOpen = false;
+                                              print("Now false");
+                                        });
                                       },
                                       child: Icon(Icons.help, color: Colors.white),
                                       style: ElevatedButton.styleFrom(
