@@ -40,7 +40,7 @@ class _CategoryCardState extends State<CategoryCard>{
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(widget.category.categoryName!,
                       style: TextStyle(
@@ -49,7 +49,7 @@ class _CategoryCardState extends State<CategoryCard>{
                           color: Colors.white
                       ),
                     ),
-                    SizedBox(height: MediaQuery.of(context).size.height/35,),
+                    //SizedBox(height: MediaQuery.of(context).size.height/35,),
                     TextButton(
                         onPressed: (){},
                         child: Text("View Leaderboard",style: TextStyle(
@@ -58,12 +58,12 @@ class _CategoryCardState extends State<CategoryCard>{
                     )
                   ],
                 ),
-                SizedBox(width: MediaQuery.of(context).size.width/8.5,),
+                SizedBox(width: MediaQuery.of(context).size.width/3,),
                 Container(
-                  height: MediaQuery.of(context).size.height/14,
-                  width: MediaQuery.of(context).size.width/6.6,
+                  height: MediaQuery.of(context).size.height/12.6,
+                  width: MediaQuery.of(context).size.width/6,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
+                    borderRadius: BorderRadius.circular(40),
                     border: Border.all(color: Colors.white)
                   ),
                   child: Column(
