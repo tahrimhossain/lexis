@@ -78,11 +78,15 @@ class _CategoryViewState extends State<CategoryView> {
                                   topRight: Radius.circular(50)
                               )
                           ),
-                          child: ListView.builder(
+                          child: ListView.separated(
                               itemCount: state.categories!.categories!.length,
+                              padding: EdgeInsets.symmetric(vertical: 12,horizontal: 17),
                               itemBuilder: (context, index){
                                 return CategoryCard(category: state.categories!.categories![index],);
-                              }
+                              },
+                              separatorBuilder:(context,index){
+                                return SizedBox(height: 30,);
+                              } ,
                           ),
                         ),
                       )

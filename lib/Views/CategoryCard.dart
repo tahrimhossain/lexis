@@ -5,6 +5,7 @@ import 'package:lexis/Views/GameView.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 
+
 class CategoryCard extends StatefulWidget {
 
   final Category category;
@@ -16,78 +17,80 @@ class CategoryCard extends StatefulWidget {
 }
 
 class _CategoryCardState extends State<CategoryCard>{
+
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 17),
-      child: Container(
-        height: MediaQuery.of(context).size.height/6,
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
-            color: Color(0xFF00587a),
-            boxShadow: [
-              BoxShadow(
-                  color: Colors.black45,
-                  offset: Offset(5.0, 5.0),
-                  blurRadius: 2.0,
-                  spreadRadius: 0.0
-              )
-            ]
-        ),
-        child: ListTile(
-          title: Center(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Column(
+
+    return Container(
+      height: (135/812)*MediaQuery.of(context).size.height,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16),
+          color: const Color(0xFF00587a),
+          boxShadow: const [
+            BoxShadow(
+                color: Colors.black45,
+                offset: Offset(5.0, 5.0),
+                blurRadius: 2.0,
+                spreadRadius: 0.0
+            )
+          ]
+      ),
+      child: ListTile(
+        title: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(widget.category.categoryName!,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 24,
+                        color: Colors.white
+                    ),
+                  ),
+                  //SizedBox(height: MediaQuery.of(context).size.height/35,),
+                  TextButton(
+                      onPressed: (){},
+                      child: const Text("View Leaderboard",style: TextStyle(
+                          color: Colors.white70
+                      ),)
+                  )
+                ],
+              ),
+              //SizedBox(width: (75/375)*MediaQuery.of(context).size.width,),
+              Spacer(),
+              Container(
+                height: (64.45/812)*MediaQuery.of(context).size.height,
+                width: (62.5/375)*MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                    //color: Colors.red,
+                    shape: BoxShape.circle,
+                    border: Border.all(color: Colors.white)
+                ),
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(widget.category.categoryName!,
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 24,
-                          color: Colors.white
-                      ),
-                    ),
-                    //SizedBox(height: MediaQuery.of(context).size.height/35,),
-                    TextButton(
-                        onPressed: (){},
-                        child: Text("View Leaderboard",style: TextStyle(
-                          color: Colors.white70
-                        ),)
-                    )
+                    Text(widget.category.bestScore.toString(), style: const TextStyle(
+                        color: Colors.white,
+                    ),),
+                    const Text("Best", style: TextStyle(
+                        color: Colors.white70,
+                        fontSize: 15
+                    ),)
                   ],
                 ),
-                SizedBox(width: MediaQuery.of(context).size.width/3,),
-                Container(
-                  height: MediaQuery.of(context).size.height/12.6,
-                  width: MediaQuery.of(context).size.width/6,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(40),
-                    border: Border.all(color: Colors.white)
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text("10", style: TextStyle(
-                        color: Colors.white
-                      ),),
-                      Text("Best", style: TextStyle(
-                        color: Colors.white70
-                      ),)
-                    ],
-                  ),
-                )
-              ],
-            ),
+              )
+            ],
           ),
-          onTap: ()async{
-           int ? score = await Navigator.push(context, MaterialPageRoute(builder: (context) => GameView(categoryId: widget.category.categoryId!)));
-           if(score != null){
-             context.read<CategoryBloc>().add(UpdateScoreEvent(score: score, categoryId: widget.category.categoryId!));
-           }
-          },
         ),
+        onTap: ()async{
+          int ? score = await Navigator.push(context, MaterialPageRoute(builder: (context) => GameView(categoryId: widget.category.categoryId!)));
+          if(score != null && score != 0){
+            context.read<CategoryBloc>().add(UpdateScoreEvent(score: score, categoryId: widget.category.categoryId!));
+          }
+        },
       ),
     );
   }
