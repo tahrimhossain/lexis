@@ -36,12 +36,49 @@ class _CategoryCardState extends State<CategoryCard>{
         ),
         child: ListTile(
           title: Center(
-            child: Text(widget.category.categoryName!,
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 24,
-                  color: Colors.white
-              ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(widget.category.categoryName!,
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 24,
+                          color: Colors.white
+                      ),
+                    ),
+                    SizedBox(height: MediaQuery.of(context).size.height/35,),
+                    TextButton(
+                        onPressed: (){},
+                        child: Text("View Leaderboard",style: TextStyle(
+                          color: Colors.white70
+                        ),)
+                    )
+                  ],
+                ),
+                SizedBox(width: MediaQuery.of(context).size.width/8.5,),
+                Container(
+                  height: MediaQuery.of(context).size.height/14,
+                  width: MediaQuery.of(context).size.width/6.6,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(30),
+                    border: Border.all(color: Colors.white)
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("10", style: TextStyle(
+                        color: Colors.white
+                      ),),
+                      Text("Best", style: TextStyle(
+                        color: Colors.white70
+                      ),)
+                    ],
+                  ),
+                )
+              ],
             ),
           ),
           onTap: ()async{
