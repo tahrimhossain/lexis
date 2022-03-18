@@ -3,6 +3,7 @@ import 'package:lexis/Models/Category.dart';
 import 'package:flutter/material.dart';
 import 'package:lexis/Views/GameView.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lexis/Views/LeaderBoardView.dart';
 
 
 
@@ -52,7 +53,9 @@ class _CategoryCardState extends State<CategoryCard>{
                   ),
                   //SizedBox(height: MediaQuery.of(context).size.height/35,),
                   TextButton(
-                      onPressed: (){},
+                      onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => LeaderBoardView(categoryId: widget.category.categoryId!,categoryName: widget.category.categoryName!)));
+                      },
                       child: const Text("View Leaderboard",style: TextStyle(
                           color: Colors.white70
                       ),)

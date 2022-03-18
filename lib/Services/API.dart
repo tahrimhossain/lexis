@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:lexis/Models/Hint.dart';
+import 'package:lexis/Models/LeaderBoard.dart';
 import 'package:lexis/Models/Round.dart';
 import 'package:lexis/Models/categories.dart';
 import 'package:http/http.dart' as http;
@@ -32,13 +32,12 @@ class API{
     }
   }
 
-  Future<Hint> getHint(String categoryId,int numberOfWords) async{
-    http.Response response = await http.get(Uri.parse('https://lexis-api.herokuapp.com/words/'+categoryId+'/'+numberOfWords.toString()));
+  Future<LeaderBoard> getLeaderBoard(String categoryId) async{
+    http.Response response = await http.get(Uri.parse('https://lexis-api.herokuapp.com/highscore/'+categoryId));
     if(response.statusCode == 200){
-      return Hint.fromJson(json.decode(response.body));
+      return LeaderBoard.fromJson(json.decode(response.body));
     }else{
-      throw Exception('Error Fetching Categories');
+      throw Exception('Error Fetching Leaderboard');
     }
   }
-
 }

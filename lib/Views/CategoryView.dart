@@ -98,6 +98,8 @@ class _CategoryViewState extends State<CategoryView> {
               return Scaffold(
                 body: Center(
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text("Error"),
                       ElevatedButton(onPressed:(){
@@ -112,7 +114,18 @@ class _CategoryViewState extends State<CategoryView> {
             } else{
               return Scaffold(
                 body: Center(
-                  child: Text("Error"),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text("Error"),
+                        ElevatedButton(onPressed:(){
+                          context.read<CategoryBloc>().add(LoadCategoriesEvent());
+                        },
+                            child: Text("Retry")
+                        )
+                      ],
+                    )
                 ),
               );
             }
