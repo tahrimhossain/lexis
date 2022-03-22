@@ -30,7 +30,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
         jumbledWords.shuffle();
         emit(GameInProgressState(score: event.score ?? 0, currentWordIndex: 0, round: round, chosenPattern: '', reset: true,jumbledWords: jumbledWords));
       }catch(e){
-        emit(ErrorLoadingRoundState());
+        emit(ErrorLoadingRoundState(categoryId: event.categoryId,numberOfWords: event.numberOfWords,score: event.score));
       }
     });
 

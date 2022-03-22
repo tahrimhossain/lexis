@@ -12,6 +12,7 @@ import 'Blocs/AuthenticationBloc/Authentication_Bloc.dart';
 
 
 
+
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -57,6 +58,7 @@ class MyApp extends StatelessWidget {
 
           if(state is DeterminingAuthenticationState){
             return const Scaffold(
+              backgroundColor: Color(0xFF283048),
               body: Center(child: CircularProgressIndicator(),),
             );
           }else if(state is AuthenticatedState){

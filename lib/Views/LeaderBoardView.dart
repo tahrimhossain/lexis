@@ -115,16 +115,20 @@ class _LeaderBoardViewState extends State<LeaderBoardView> {
               );
             }else{
               return Scaffold(
+                backgroundColor: const Color(0xFF283048),
                 body: Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        const Text("Error"),
+                        const Text("Something went wrong!",style: TextStyle(fontWeight: FontWeight.normal, fontSize: 20, color: Colors.white),),
                         ElevatedButton(onPressed:(){
                           context.read<LeaderBoardBloc>().add(LoadLeaderBoardEvent(categoryId: widget.categoryId));
                         },
-                            child: const Text("Retry")
+                          child: const Text("Retry"),
+                          style: ElevatedButton.styleFrom(
+                            primary: const Color(0xFF00587a),
+                          ),
                         )
                       ],
                     )

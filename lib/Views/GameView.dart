@@ -40,13 +40,29 @@ class _GameViewState extends State<GameView> {
             }
           },
           builder: (context,state){
-            if(state is LoadingRoundState){
+            if(state is ErrorLoadingRoundState){
               return Scaffold(
                 backgroundColor: Color(0xFF283048),
                 body: Center(
-                  child: CircularProgressIndicator(),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text("Something went wrong!",style: const TextStyle(fontWeight: FontWeight.normal, fontSize: 20, color: Colors.white),),
+                        ElevatedButton(onPressed:(){
+                          context.read<GameBloc>().add(LoadRoundEvent(categoryId: state.categoryId, numberOfWords: state.numberOfWords,score: state.score));
+                        },
+                          child: Text("Retry"),
+                          style: ElevatedButton.styleFrom(
+                            primary: Color(0xFF00587a),
+                          ),
+
+                        )
+                      ],
+                    )
                 ),
               );
+
             }else if(state is GameInProgressState){
               return Scaffold(
                 backgroundColor: Color(0xFF283048),
@@ -153,7 +169,7 @@ class _GameViewState extends State<GameView> {
                                                                           Icon(CupertinoIcons.arrowshape_turn_up_right, size: 15),
                                                                           SizedBox(width: 5,),
                                                                           Flexible(
-                                                                            child: Text("${state.round.words![state.currentWordIndex].hints![index].meanings![index2]}",
+                                                                            child: Text(state.round.words![state.currentWordIndex].hints![index].meanings![index2],
                                                                               style: TextStyle(
                                                                                 fontSize: 14,
                                                                               ),
@@ -175,7 +191,7 @@ class _GameViewState extends State<GameView> {
                                               );
                                             }).whenComplete((){
                                               popUpOpen = false;
-                                              print("Now false");
+
                                         });
                                       },
                                       child: Icon(Icons.help, color: Colors.white),
@@ -319,8 +335,9 @@ class _GameViewState extends State<GameView> {
 
             } else{
               return Scaffold(
+                backgroundColor: Color(0xFF283048),
                 body: Center(
-                  child: Text("Error"),
+                  child: CircularProgressIndicator(),
                 ),
               );
             }

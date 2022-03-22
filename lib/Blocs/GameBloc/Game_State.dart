@@ -31,4 +31,10 @@ class GameOverState extends GameState{
 
 class ErrorLoadingRoundState extends GameState{
 
+  String categoryId;
+  int numberOfWords;
+  int ? score;
+
+  ErrorLoadingRoundState({this.score,required this.categoryId,required this.numberOfWords}):super();
+
 }

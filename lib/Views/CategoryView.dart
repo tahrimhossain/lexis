@@ -96,16 +96,20 @@ class _CategoryViewState extends State<CategoryView> {
               );
             }else if(state is ErrorUpdatingScoreState){
               return Scaffold(
+                backgroundColor: Color(0xFF283048),
                 body: Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text("Error"),
+                      Text("Something went wrong!",style: const TextStyle(fontWeight: FontWeight.normal, fontSize: 20, color: Colors.white),),
                       ElevatedButton(onPressed:(){
                         context.read<CategoryBloc>().add(UpdateScoreEvent(score: state.score, categoryId: state.categoryId));
                       },
-                      child: Text("Retry")
+                        child: Text("Retry"),
+                        style: ElevatedButton.styleFrom(
+                          primary: Color(0xFF00587a),
+                        ),
                       )
                     ],
                   )
@@ -113,16 +117,21 @@ class _CategoryViewState extends State<CategoryView> {
               );
             } else{
               return Scaffold(
+                backgroundColor: Color(0xFF283048),
                 body: Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text("Error"),
+                        Text("Something went wrong!",style: const TextStyle(fontWeight: FontWeight.normal, fontSize: 20, color: Colors.white),),
                         ElevatedButton(onPressed:(){
                           context.read<CategoryBloc>().add(LoadCategoriesEvent());
                         },
-                            child: Text("Retry")
+                          child: Text("Retry"),
+                          style: ElevatedButton.styleFrom(
+                            primary: Color(0xFF00587a),
+                          ),
+
                         )
                       ],
                     )
