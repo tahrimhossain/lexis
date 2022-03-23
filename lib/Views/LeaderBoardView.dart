@@ -115,6 +115,9 @@ class _LeaderBoardViewState extends State<LeaderBoardView> {
               );
             }else{
               return Scaffold(
+                appBar: AppBar(
+                  backgroundColor: Colors.transparent,
+                ),
                 backgroundColor: const Color(0xFF283048),
                 body: Center(
                     child: Column(

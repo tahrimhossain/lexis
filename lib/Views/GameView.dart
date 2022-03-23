@@ -42,6 +42,9 @@ class _GameViewState extends State<GameView> {
           builder: (context,state){
             if(state is ErrorLoadingRoundState){
               return Scaffold(
+                appBar: AppBar(
+                  backgroundColor: Colors.transparent,
+                ),
                 backgroundColor: Color(0xFF283048),
                 body: Center(
                     child: Column(
@@ -237,62 +240,9 @@ class _GameViewState extends State<GameView> {
                 ),
               );
             }else if(state is RoundOverState){
-              return Scaffold(
-                body: SafeArea(
-                    child: Center(
-                      child: Padding(
-                        padding: EdgeInsets.only(top:(30/844)*MediaQuery.of(context).size.height,bottom:(30/844)*MediaQuery.of(context).size.height),
-                        child: Column(
-                          children: [
-                            Column(
-                              children: [
-                                Text("Score",style:TextStyle(fontWeight: FontWeight.bold,fontSize:70,color: Colors.black)),
-                                Text(state.score.toString(),style:TextStyle(fontWeight: FontWeight.bold,fontSize:40,color: Colors.black)),
-                              ],
-                            ),
-                            Spacer(),
-                            Padding(
-                              padding: EdgeInsets.only(left: (20/390)*MediaQuery.of(context).size.width,right: (20/390)*MediaQuery.of(context).size.width),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  ElevatedButton(
-                                    onPressed: (){
-                                      Navigator.pop(context,state.score);
-                                    },
-                                    child: Icon(Icons.home, color: Colors.white),
-                                    style: ElevatedButton.styleFrom(
-                                      shape: CircleBorder(),
-                                      padding: EdgeInsets.all(20),
-                                      primary: Colors.grey,
-                                      onPrimary: Colors.black,
-                                    ),
-                                  ),
-                                  Spacer(),
-                                  ElevatedButton(
-                                    onPressed: (){
-                                      context.read<GameBloc>().add(LoadRoundEvent(categoryId: widget.categoryId, numberOfWords: 5,score: state.score));
-                                    },
-                                    child: Icon(Icons.play_arrow, color: Colors.white),
-                                    style: ElevatedButton.styleFrom(
-                                      shape: CircleBorder(),
-                                      padding: EdgeInsets.all(20),
-                                      primary: Colors.grey,
-                                      onPrimary: Colors.black,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-
-                          ],
-                        ),
-                      ),
-                    )
-                )
-              );
-            }else if(state is GameOverState){
-              return Scaffold(
+              return WillPopScope(
+                  child: Scaffold(
+                  backgroundColor: Color(0xFF283048),
                   body: SafeArea(
                       child: Center(
                         child: Padding(
@@ -301,15 +251,74 @@ class _GameViewState extends State<GameView> {
                             children: [
                               Column(
                                 children: [
-                                  Text("The correct word is...",style:TextStyle(fontWeight: FontWeight.bold,fontSize:20,color: Colors.black)),
-                                  Text(state.word.word!,style:TextStyle(fontWeight: FontWeight.bold,fontSize:70,color: Colors.black)),
+                                  Text("Score",style:TextStyle(fontWeight: FontWeight.bold,fontSize:70,color: Colors.white)),
+                                  Text(state.score.toString(),style:TextStyle(fontWeight: FontWeight.bold,fontSize:40,color: Colors.white)),
+                                ],
+                              ),
+                              Spacer(),
+                              Padding(
+                                padding: EdgeInsets.only(left: (20/390)*MediaQuery.of(context).size.width,right: (20/390)*MediaQuery.of(context).size.width),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    ElevatedButton(
+                                      onPressed: (){
+                                        Navigator.pop(context,state.score);
+                                      },
+                                      child: Icon(Icons.home, color: Colors.white),
+                                      style: ElevatedButton.styleFrom(
+                                        shape: CircleBorder(),
+                                        padding: EdgeInsets.all(20),
+                                        primary: Colors.grey,
+                                        onPrimary: Colors.black,
+                                      ),
+                                    ),
+                                    Spacer(),
+                                    ElevatedButton(
+                                      onPressed: (){
+                                        context.read<GameBloc>().add(LoadRoundEvent(categoryId: widget.categoryId, numberOfWords: 5,score: state.score));
+                                      },
+                                      child: Icon(Icons.play_arrow, color: Colors.white),
+                                      style: ElevatedButton.styleFrom(
+                                        shape: CircleBorder(),
+                                        padding: EdgeInsets.all(20),
+                                        primary: Colors.grey,
+                                        onPrimary: Colors.black,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+
+                            ],
+                          ),
+                        ),
+                      )
+                  )
+              ),
+                  onWillPop:() async => false
+              );
+            }else if(state is GameOverState){
+              return WillPopScope(
+                  child: Scaffold(
+                  backgroundColor: Color(0xFF283048),
+                  body: SafeArea(
+                      child: Center(
+                        child: Padding(
+                          padding: EdgeInsets.only(top:(30/844)*MediaQuery.of(context).size.height,bottom:(30/844)*MediaQuery.of(context).size.height),
+                          child: Column(
+                            children: [
+                              Column(
+                                children: [
+                                  Text("The correct word is...",style:TextStyle(fontWeight: FontWeight.bold,fontSize:20,color: Colors.white)),
+                                  Text(state.word.word!,style:TextStyle(fontWeight: FontWeight.bold,fontSize:70,color: Colors.white)),
                                 ],
                               ),
                               Spacer(),
                               Column(
                                 children: [
-                                  Text("Score",style:TextStyle(fontWeight: FontWeight.bold,fontSize:70,color: Colors.black)),
-                                  Text(state.score.toString(),style:TextStyle(fontWeight: FontWeight.bold,fontSize:40,color: Colors.black)),
+                                  Text("Score",style:TextStyle(fontWeight: FontWeight.bold,fontSize:70,color: Colors.white)),
+                                  Text(state.score.toString(),style:TextStyle(fontWeight: FontWeight.bold,fontSize:40,color: Colors.white)),
                                 ],
                               ),
                               Spacer(),
@@ -331,6 +340,8 @@ class _GameViewState extends State<GameView> {
                         ),
                       )
                   )
+              ),
+                  onWillPop: () async => false
               );
 
             } else{
