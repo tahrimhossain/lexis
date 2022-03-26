@@ -309,19 +309,67 @@ class _GameViewState extends State<GameView> {
                           child: Column(
                             children: [
                               Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text("The correct word is...",style:TextStyle(fontWeight: FontWeight.bold,fontSize:20,color: Colors.white)),
                                   Text(state.word.word!,style:TextStyle(fontWeight: FontWeight.bold,fontSize:70,color: Colors.white)),
                                 ],
                               ),
-                              Spacer(),
+                              SizedBox(height: 30,),
+                              Expanded(
+                                child: ListView.builder(
+                                  itemCount: state.word.hints!.length,
+                                  itemBuilder: (BuildContext context, int index) {
+                                    return Column(
+                                      children: [
+                                        Text("${state.word.hints![index].poS}",
+                                            style: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.white,
+                                            )
+                                        ),
+                                        SizedBox(height: 5,),
+                                        ListView.builder(
+                                            shrinkWrap: true,
+                                            physics: ClampingScrollPhysics(),
+                                            itemCount: state.word.hints![index].meanings!.length,
+                                            itemBuilder: (BuildContext context, int index2){
+                                              return Column(
+                                                children: [
+                                                  Row(
+                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                    children: [
+                                                      SizedBox(width: 5,),
+                                                      Icon(CupertinoIcons.arrowshape_turn_up_right, size: 15, color: Colors.white,),
+                                                      SizedBox(width: 5,),
+                                                      Flexible(
+                                                        child: Text(state.word.hints![index].meanings![index2],
+                                                          style: TextStyle(
+                                                            fontSize: 16,
+                                                            color: Colors.white
+                                                          ),
+                                                        ),
+                                                      )
+                                                    ],
+                                                  ),
+                                                  SizedBox(height: 8,)
+                                                ],
+                                              );
+                                            }),
+                                        SizedBox(height: 14,),
+                                      ],
+                                    );
+                                  },
+                                ),
+                              ),
                               Column(
                                 children: [
                                   Text("Score",style:TextStyle(fontWeight: FontWeight.bold,fontSize:70,color: Colors.white)),
                                   Text(state.score.toString(),style:TextStyle(fontWeight: FontWeight.bold,fontSize:40,color: Colors.white)),
                                 ],
                               ),
-                              Spacer(),
+                              SizedBox(height: MediaQuery.of(context).size.height/15,),
                               ElevatedButton(
                                 onPressed: (){
                                   Navigator.pop(context,state.score);

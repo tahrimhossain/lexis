@@ -497,6 +497,7 @@ class _LogInSignUpViewState extends State<LogInSignUpView> {
                  });
                  isSignUpScreen?  context.read<AuthenticationBloc>().add(SignUpRequestEvent(name: name,password: pass, email: email)): context.read<AuthenticationBloc>().add(LogInRequestEvent(password: pass, email: email));
                }
+
             },
           )
               : const Center(),

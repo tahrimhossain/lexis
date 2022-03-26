@@ -76,7 +76,7 @@ class _LeaderBoardViewState extends State<LeaderBoardView> {
                                 ]
                             ),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 Text((index+1).toString(),
                                   style: const TextStyle(

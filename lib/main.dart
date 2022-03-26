@@ -8,6 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:lexis/Views/LogInSignUpView.dart';
 import 'Blocs/AuthenticationBloc/Authentication_Bloc.dart';
+import 'package:dcdg/dcdg.dart';
 
 
 
