@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:lexis/Models/LeaderBoard.dart';
 import 'package:lexis/Models/Round.dart';
-import 'package:lexis/Models/categories.dart';
+import 'package:lexis/Models/Categories.dart';
 import 'package:http/http.dart' as http;
 
 

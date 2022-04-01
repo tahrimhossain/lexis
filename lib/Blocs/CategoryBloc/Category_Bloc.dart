@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:lexis/Models/CustomUser.dart';
-import 'package:lexis/Models/categories.dart';
+import 'package:lexis/Models/Categories.dart';
 import 'package:lexis/Services/API.dart';
 import 'package:lexis/Services/Authentication.dart';
 part  'Category_Event.dart';

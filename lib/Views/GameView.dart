@@ -329,6 +329,7 @@ class _GameViewState extends State<GameView> {
                                                 color: Colors.white,
                                             )
                                         ),
+
                                         SizedBox(height: 5,),
                                         ListView.builder(
                                             shrinkWrap: true,
