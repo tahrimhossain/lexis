@@ -309,6 +309,13 @@ class _GameViewState extends State<GameView> {
                           child: Column(
                             children: [
                               Column(
+                                children: [
+                                  Text("Score",style:TextStyle(fontWeight: FontWeight.bold,fontSize:70,color: Colors.white)),
+                                  Text(state.score.toString(),style:TextStyle(fontWeight: FontWeight.bold,fontSize:40,color: Colors.white)),
+                                ],
+                              ),
+                              SizedBox(height: MediaQuery.of(context).size.height/15,),
+                              Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text("The correct word is...",style:TextStyle(fontWeight: FontWeight.bold,fontSize:20,color: Colors.white)),
@@ -364,13 +371,7 @@ class _GameViewState extends State<GameView> {
                                   },
                                 ),
                               ),
-                              Column(
-                                children: [
-                                  Text("Score",style:TextStyle(fontWeight: FontWeight.bold,fontSize:70,color: Colors.white)),
-                                  Text(state.score.toString(),style:TextStyle(fontWeight: FontWeight.bold,fontSize:40,color: Colors.white)),
-                                ],
-                              ),
-                              SizedBox(height: MediaQuery.of(context).size.height/15,),
+
                               ElevatedButton(
                                 onPressed: (){
                                   Navigator.pop(context,state.score);
