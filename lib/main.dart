@@ -8,7 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:lexis/Views/LogInSignUpView.dart';
 import 'Blocs/AuthenticationBloc/Authentication_Bloc.dart';
-import 'package:dcdg/dcdg.dart';
+
 
 
 
@@ -54,7 +54,18 @@ class MyApp extends StatelessWidget {
               iconTheme: IconThemeData(color: Colors.white),
             )
         ),
-        home: BlocBuilder<AuthenticationBloc,AuthenticationState>(
+        home: BlocConsumer<AuthenticationBloc,AuthenticationState>(
+          listener: (context,state){
+            if(state is NotAuthenticatedState){
+
+              if(state.logInWithEmailAndPasswordFailure != null){
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.logInWithEmailAndPasswordFailure!.message),backgroundColor: Colors.red,duration: const Duration(seconds: 2),));
+              }else if(state.signUpWithEmailAndPasswordFailure != null){
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.signUpWithEmailAndPasswordFailure!.message),backgroundColor: Colors.red,duration: const Duration(seconds: 2),));
+              }
+
+            }
+          },
         builder: (context, state) {
 
           if(state is DeterminingAuthenticationState){
