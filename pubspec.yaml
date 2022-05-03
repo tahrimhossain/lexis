@@ -40,9 +40,11 @@ dependencies:
   firebase_auth: ^3.3.7
   email_validator: ^2.0.1
   flutter_icons: ^1.1.0
-  dcdg: ^4.0.1
+  bloc_test: ^9.0.3
 
 dev_dependencies:
+  integration_test:
+    sdk: flutter
   flutter_test:
     sdk: flutter
 

@@ -8,6 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:lexis/Views/LogInSignUpView.dart';
 import 'Blocs/AuthenticationBloc/Authentication_Bloc.dart';
+import 'package:http/http.dart' as http;
 
 
 
@@ -22,7 +23,7 @@ void main() async{
   runApp(MultiRepositoryProvider(
     providers: [
       RepositoryProvider<API>(
-        create: (context) => API(),
+        create: (context) => API(client:http.Client()),
       ),
       RepositoryProvider<Authentication>(
         create: (context) => Authentication(),
